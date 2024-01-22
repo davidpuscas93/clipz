@@ -1,0 +1,41 @@
+<div class="mb-3">
+  <label class="inline-block mb-2">{{ label }}</label>
+  <input
+    class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [type]="type"
+    [mask]="mask"
+    [dropSpecialCharacters]="false"
+    autocomplete="off"
+  />
+  <ng-container *ngIf="control.touched && control.dirty">
+    <p *ngIf="control.errors?.required" class="text-red-400 text-sm mt-1">
+      Field is required.
+    </p>
+    <p *ngIf="control.errors?.minlength" class="text-red-400 text-sm mt-1">
+      The value inputted must be at least
+      {{ control.errors?.minlength.requiredLength }}
+      characters long.
+    </p>
+    <p *ngIf="control.errors?.email" class="text-red-400 text-sm mt-1">
+      The value inputted must be a valid email.
+    </p>
+    <p *ngIf="control.errors?.min" class="text-red-400 text-sm mt-1">
+      The value inputted must be at least {{ control.errors?.min.min }}.
+    </p>
+    <p *ngIf="control.errors?.max" class="text-red-400 text-sm mt-1">
+      The value inputted must be at most {{ control.errors?.max.max }}.
+    </p>
+    <p *ngIf="control.errors?.pattern" class="text-red-400 text-sm mt-1">
+      Password must be at least 8 characters long, contain at least 1 lowercase
+      letter, 1 uppercase letter and 1 number.
+    </p>
+    <p *ngIf="control.errors?.noMatch" class="text-red-400 text-sm mt-1">
+      Passwords must match.
+    </p>
+    <p *ngIf="control.errors?.emailTaken" class="text-red-400 text-sm mt-1">
+      Email is already taken.
+    </p>
+  </ng-container>
+</div>

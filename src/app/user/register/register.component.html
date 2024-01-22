@@ -1,0 +1,47 @@
+<!-- Alert -->
+<app-alert *ngIf="showAlert" [color]="alertColor">
+  {{ alertMessage }}
+</app-alert>
+
+<!-- Registration Form -->
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <!-- Name -->
+  <app-input label="Name" placeholder="Enter Name" [control]="name" />
+  <!-- Email -->
+  <app-input
+    label="Email"
+    placeholder="Enter Email"
+    type="email"
+    [control]="email"
+  />
+  <!-- Age -->
+  <app-input label="Age" placeholder="Enter Age" type="text" [control]="age" />
+  <!-- Password -->
+  <app-input
+    label="Password"
+    placeholder="Enter Password"
+    type="password"
+    [control]="password"
+  />
+  <!-- Confirm Password -->
+  <app-input
+    label="Confirm Password"
+    placeholder="Confirm Password"
+    type="password"
+    [control]="confirmPassword"
+  />
+  <!-- Phone Number -->
+  <app-input
+    label="Phone Number"
+    placeholder="Enter Phone Number"
+    mask="(000) 000-0000"
+    [control]="phoneNumber"
+  />
+  <button
+    [disabled]="registerForm.invalid || loading"
+    type="submit"
+    class="block w-full bg-indigo-400 text-white mb-3 mt-6 py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-indigo-400"
+  >
+    Submit
+  </button>
+</form>
