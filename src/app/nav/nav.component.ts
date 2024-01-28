@@ -18,8 +18,7 @@ export class NavComponent implements OnInit {
     this.modal.toggle('auth-modal');
   }
 
-  async logout($event: Event) {
-    $event.preventDefault();
+  async logout() {
     try {
       await this.auth.logout();
     } catch (error) {
